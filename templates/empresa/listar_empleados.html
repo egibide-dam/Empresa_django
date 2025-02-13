@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Empleados</title>
+</head>
+<body>
+<h1>Lista de Empleados</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Antigüedad</th>
+        <th>Departamento</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for empleado in empleados %}
+        <tr>
+            <td><a href="{% url 'ver_empleado' empleado.id %}">{{empleado.nombre}}</a>
+            </td>
+            <td>{{ empleado.fecha_nacimiento }}</td>
+            <td>{{ empleado.antiguedad }}</td>
+            <td>{{ empleado.departamento.nombre }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

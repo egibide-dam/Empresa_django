@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Empleado</title>
+</head>
+<body>
+<h1>Detalles del Empleado</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Antigüedad</th>
+        <th>Departamento</th>
+        <th>Habilidades</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.fecha_nacimiento }}</td>
+            <td>{{ empleado.antiguedad }}</td>
+            <td>{{ empleado.departamento.nombre }}</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
