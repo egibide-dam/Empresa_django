@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 
 from empresa.models import Empleado, Departamento, Habilidad
 
@@ -6,7 +7,10 @@ from empresa.models import Empleado, Departamento, Habilidad
 # Create your views here.
 def listar_empleados(request):
     empleados = Empleado.objects.all()
-    return render(request, 'empresa/listar_empleados.html', {'empleados': empleados})
+    paginator = Paginator(empleados, 5)
+    page = request.GET.get('page', 1)
+    empleados_paginados= paginator.get_page(page)
+    return render(request, 'empresa/listar_empleados.html', {'empleados': empleados_paginados})
 
 
 def ver_empleado(request, empleado_id):

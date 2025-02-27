@@ -2,7 +2,7 @@ from django.urls import path
 from .views import listar_empleados, ver_empleado, crear_empleado, eliminar_empleado, editar_empleado
 
 urlpatterns = [
-    path('empleados', listar_empleados, name='listar_empleados'),
+    path('empleados/', listar_empleados, name='listar_empleados'),
     path('empleados/<int:empleado_id>', ver_empleado, name='ver_empleado'),
     path('empleados/crear/', crear_empleado, name='crear_empleado'),
     path('empleados/eliminar/<int:empleado_id>', eliminar_empleado, name='eliminar_empleado'),

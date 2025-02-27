@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Crear Empleado</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
+
 <h1>Crear Empleado</h1>
 <form method="POST" action="">
     {% csrf_token %}
@@ -32,5 +28,4 @@
         {% endfor %}
     <button type="submit">Crear</button>
 </form>
-</body>
-</html>
+{% endblock %}

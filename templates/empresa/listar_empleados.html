@@ -1,38 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Empleados</title>
-</head>
-<body>
-<h1>Lista de Empleados</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Antigüedad</th>
-        <th>Departamento</th>
-        <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for empleado in empleados %}
+{% extends "layout.html" %}
+{% block content %}
+
+    <h1>Lista de Empleados</h1>
+    <table border="1">
+        <thead>
         <tr>
-            <td><a href="{% url 'ver_empleado' empleado.id %}">{{empleado.nombre}}</a>
-            </td>
-            <td>{{ empleado.fecha_nacimiento }}</td>
-            <td>{{ empleado.antiguedad }}</td>
-            <td>{{ empleado.departamento.nombre }}</td>
-            <td>
-                <a href ="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a>
-                 <a href ="{% url 'editar_empleado' empleado.id %}">Editar</a>
-            </td>
+            <th>Nombre</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Antigüedad</th>
+            <th>Departamento</th>
+            <th>Acciones</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for empleado in empleados %}
+            <tr>
+                <td><a href="{% url 'ver_empleado' empleado.id %}">{{ empleado.nombre }}</a>
+                </td>
+                <td>{{ empleado.fecha_nacimiento }}</td>
+                <td>{{ empleado.antiguedad }}</td>
+                <td>{{ empleado.departamento.nombre }}</td>
+                <td>
+                    <a href="{% url 'eliminar_empleado' empleado.id %}">Eliminar</a>
+                    <a href="{% url 'editar_empleado' empleado.id %}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+    <span class="step-links">
+        {% if empleados.has_previous %}
+            <a href="?page=1"><< Primera</a>
+            <a href="?page={{ empleados.previous_page_number }}">Anterior</a>
 
+        {% endif %}
+        <span class="current"> Página {{ empleados.number }} de {{ empleados.paginator.num_pages }}
+            </span>
+        {% if empleados.has_next %}
+            <a href="?page={{ empleados.next_page_number }}">Siguiente</a>
+            <a href="?page={{ empleados.paginator.num_pages }}">Última</a>
 
-</body>
-</html>
+        {% endif %}
+    </span>
+    </div>
+
+{% endblock %}

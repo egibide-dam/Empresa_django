@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi ERP</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+<h1>Mi ERP</h1>
+<ul>
+    <li><a href="/">Portada</a></li>
+    <li><a href="{% url 'listar_empleados' %}">Empleados</a></li>
+    <li><a href="/">Departamentos</a></li>
+    <li><a href="/">Habilidades</a></li>
+</ul>
+{% block content %}{% endblock %}
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
